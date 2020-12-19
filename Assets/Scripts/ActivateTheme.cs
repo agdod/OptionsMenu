@@ -17,8 +17,8 @@ public class ActivateTheme : MonoBehaviour
 	[SerializeField] UIManager _uiManager;
 	[SerializeField] private Zone _zone;
 	[SerializeField] private Image _image;
-	
-	private void Start()
+
+	private void Awake()
 	{
 		_image = GetComponent<Image>();
 		if (_image == null)
@@ -27,12 +27,14 @@ public class ActivateTheme : MonoBehaviour
 		}
 
 		_uiManager.OnThemeChanged.AddListener(ChangeTheme);
+		Debug.Log(this.gameObject + " Listener added for image background via awake callback");
 	}
 
 	// *** If theme is true then theme is Dark *** //
 
 	void ChangeTheme(bool theme)
 	{
+		Debug.Log(this.gameObject + " of type " + _zone +" Is Dark theme " + theme);
 		switch (_zone)
 		{
 			case Zone.MAIN:
@@ -57,6 +59,7 @@ public class ActivateTheme : MonoBehaviour
 		{
 			themeColor = Color.HSVToRGB(0, 0, 1);
 		}
+
 		themeColor.a = 1;
 		if (_image != null)
 		{
