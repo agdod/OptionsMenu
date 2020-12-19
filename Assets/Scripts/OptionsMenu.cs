@@ -21,7 +21,6 @@ public class OptionsMenu : MonoBehaviour
 	private bool _isDarkTheme; // Current theme
 	private bool _newTheme;
 
-	private bool _startupDone = false;
 	// Events
 
 	public Events.EventFontSizeChanged OnFontSizeChange;
@@ -30,11 +29,13 @@ public class OptionsMenu : MonoBehaviour
 
 	private void Start()
 	{
+		// When OptionsMenu is activated calls on UIManager to rebraodcast theme
 		_uiManager.OnThemeChanged.Invoke(_isDarkTheme);
 	}
 
 	public void StartUp()
 	{
+		// PreSetup called from UIManager.
 		_uiManager.OnOptionsMenuActivated.AddListener(ToggleState);
 		_uiManager.OnThemeChanged.AddListener(InitalSetup); // Listens for inital setup of theme
 		_okButton.onClick.AddListener(HandleOkClick);
@@ -48,7 +49,6 @@ public class OptionsMenu : MonoBehaviour
 	{
 		// Setup theme to inital Status as broadcast by UIManager
 		_isDarkTheme = status;
-		_startupDone = true;
 		_uiManager.OnThemeChanged.RemoveListener(InitalSetup);
 	}
 
