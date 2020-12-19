@@ -18,7 +18,8 @@ public class UIManager : MonoBehaviour
 	private bool _currentState; // bool for if options menu is active or not
 	private MenuState _menuState;
 
-	private bool _isDarkTheme;
+	// Use to determine start theme
+	[SerializeField] private bool _isDarkTheme;
 	private float _fontColor;
 	private float _fontSize;
 
@@ -45,7 +46,7 @@ public class UIManager : MonoBehaviour
 	private void Start()
 	{
 		_optionsMenu.StartUp();
-		
+
 		_optionsMenu.OnFontSizeChange.AddListener(HandleFontSizeChange);
 		_optionsMenu.OnFontColourChange.AddListener(HandleFontColourChange);
 		_optionsMenu.OnBubbleThemeChange.AddListener(HandleThemeChange);
@@ -58,11 +59,11 @@ public class UIManager : MonoBehaviour
 	void DefaultSetup()
 	{
 		Debug.Log("Calling  inital handlethemechange");
-		HandleThemeChange(true);
+		HandleThemeChange(_isDarkTheme);
 		Debug.Log("Initail theme called!");
 	}
 
-	void HandleFontColourChange (float fontColour)
+	void HandleFontColourChange(float fontColour)
 	{
 		_fontColor = fontColour;
 		OnFontColourChanged.Invoke(fontColour);
