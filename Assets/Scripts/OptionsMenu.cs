@@ -19,13 +19,15 @@ public class OptionsMenu : MonoBehaviour
 	private float _currentcolour;
 	private float _newColour;
 	private bool _isDarkTheme; // Current theme
-	private bool _newTheme;	// Has theme changed
+	private bool _newTheme; // Has theme changed
+	private Language _currentLanguage;
 
 	// Events
 
 	public Events.EventFontSizeChanged OnFontSizeChange;
 	public Events.EventFontColourchange OnFontColourChange;
 	public Events.EventThemeChanged OnBubbleThemeChange;
+	public Events.EventLanguageChanged OnBubbleLanguageChange;
 
 	private void Start()
 	{
@@ -94,6 +96,15 @@ public class OptionsMenu : MonoBehaviour
 	void HandleCancelClick()
 	{
 		_uiManager.OnOptionsMenuActivated.Invoke(false);
+	}
+
+	public void BubbleLanguageChange(Language lang)
+	{
+		if (lang != _currentLanguage)
+		{
+			_currentLanguage = lang;
+			OnBubbleLanguageChange.Invoke(lang);
+		}
 	}
 
 	public void BubbleThemeChange(bool theme)

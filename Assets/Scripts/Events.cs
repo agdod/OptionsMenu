@@ -11,5 +11,7 @@ public class Events
     public class EventFontColourchange : UnityEvent<float> { }// Font colour represnted as (HSV) float value 0 - 1.
     [System.Serializable]
     public class EventThemeChanged : UnityEvent<bool> { } // Theme is represetned by bool where Dark Theme is true.
+    [System.Serializable]
+    public class EventLanguageChanged : UnityEvent<Language> { } // Control langugae selected. 
 }
     

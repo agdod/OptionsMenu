@@ -11,6 +11,12 @@ public enum MenuState
 	OPTIONS
 }
 
+public enum Language
+{
+	ENGLISH,
+	FINNISH
+}
+
 public class UIManager : MonoBehaviour
 {
 	[SerializeField] private MainMenu _mainMenu;
@@ -22,6 +28,7 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private bool _isDarkTheme;
 	private float _fontColor;
 	private float _fontSize;
+	private Language _language;
 
 	// Events subscriptions
 
@@ -29,6 +36,7 @@ public class UIManager : MonoBehaviour
 	public Events.EventFontSizeChanged OnFontSizeChanged;
 	public Events.EventFontColourchange OnFontColourChanged;
 	public Events.EventThemeChanged OnThemeChanged;
+	public Events.EventLanguageChanged OnLanguageChanged;
 
 	// Font selection 
 	/*
@@ -50,6 +58,7 @@ public class UIManager : MonoBehaviour
 		_optionsMenu.OnFontSizeChange.AddListener(HandleFontSizeChange);
 		_optionsMenu.OnFontColourChange.AddListener(HandleFontColourChange);
 		_optionsMenu.OnBubbleThemeChange.AddListener(HandleThemeChange);
+		_optionsMenu.OnBubbleLanguageChange.AddListener(HandleLanguageChange);
 
 		DefaultSetup();
 
@@ -79,6 +88,15 @@ public class UIManager : MonoBehaviour
 	{
 		_isDarkTheme = theme;
 		OnThemeChanged.Invoke(theme);
+	}
+
+	void HandleLanguageChange(Language lang)
+	{
+		if (_language != lang)
+		{
+			_language = lang;
+			OnLanguageChanged.Invoke(lang);
+		}
 	}
 
 	public void StartClick()
