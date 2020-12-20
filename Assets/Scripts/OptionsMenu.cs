@@ -19,7 +19,7 @@ public class OptionsMenu : MonoBehaviour
 	private float _currentcolour;
 	private float _newColour;
 	private bool _isDarkTheme; // Current theme
-	private bool _newTheme;
+	private bool _newTheme;	// Has theme changed
 
 	// Events
 
@@ -38,6 +38,7 @@ public class OptionsMenu : MonoBehaviour
 		// PreSetup called from UIManager.
 		_uiManager.OnOptionsMenuActivated.AddListener(ToggleState);
 		_uiManager.OnThemeChanged.AddListener(InitalSetup); // Listens for inital setup of theme
+
 		_okButton.onClick.AddListener(HandleOkClick);
 		_cancelButton.onClick.AddListener(HandleCancelClick);
 
@@ -84,9 +85,8 @@ public class OptionsMenu : MonoBehaviour
 			_currentcolour = _newColour;
 			OnFontColourChange.Invoke(_newColour);
 		}
-		if (_isDarkTheme != _newTheme)
+		if ( _newTheme)
 		{
-			_isDarkTheme = _newTheme;
 			OnBubbleThemeChange.Invoke(_isDarkTheme);
 		}
 	}
@@ -98,7 +98,9 @@ public class OptionsMenu : MonoBehaviour
 
 	public void BubbleThemeChange(bool theme)
 	{
-		_newTheme = theme;
+		// only 2 theme to choose from
+		_newTheme = true; // has Theme changed
+		_isDarkTheme = !_isDarkTheme;
 		Debug.Log("bubbling theme change up");
 	}
 

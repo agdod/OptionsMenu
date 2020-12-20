@@ -37,7 +37,7 @@ public class FontSettings_Tmp : MonoBehaviour
 	// Add listener for  UIMAnager chnaging font size, font color, text language.
 	// Register listenr with corresponding function (OnFontSizeChange ...etc)
 
-	private void Start()
+	private void Awake()
 	{
 		_fontText = GetComponent<TMP_Text>();		
 		if ( _fontText == null)
@@ -48,7 +48,7 @@ public class FontSettings_Tmp : MonoBehaviour
 		_uiManager.OnFontSizeChanged.AddListener(OnFontSizeChange);
 		_uiManager.OnFontColourChanged.AddListener(OnFontColourChange);
 		_uiManager.OnThemeChanged.AddListener(OnThemeChange);
-		Debug.Log(this.gameObject + " FontSettings Listeners added");
+		Debug.Log(this.gameObject + " FontSettings Listeners added in awake");
 	}
 
 	void OnThemeChange(bool theme)
