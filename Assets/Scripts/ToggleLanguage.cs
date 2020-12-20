@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class ToggleLanguage : MonoBehaviour
 {
-    [SerializeField] private OptionsMenu _optionsMenu;
-    private Toggle _thisToggle;
-    [SerializeField] private Language _language;
+	[SerializeField] private OptionsMenu _optionsMenu;
+	private Toggle _thisToggle;
+	[SerializeField] private Language _language;
+	[SerializeField] private bool _isEnglish;
 
-    public Events.EventLanguageChanged OnLanguageChange;
+	public Events.EventLanguageChanged OnLanguageChange;
 
 	private void Start()
 	{
@@ -22,9 +23,21 @@ public class ToggleLanguage : MonoBehaviour
 
 	void HandleLanguageChange(bool changed)
 	{
+
 		if (_thisToggle.isOn)
 		{
-			OnLanguageChange.Invoke(_language);
+			if (_isEnglish)
+			{
+				Debug.Log("Language changed to " + Language.ENGLISH);
+				OnLanguageChange.Invoke(Language.ENGLISH);
+			}
+			else
+			{
+				OnLanguageChange.Invoke(Language.FINNISH);
+				Debug.Log("Language changed to " + Language.FINNISH);
+			}
+
+
 		}
 	}
 }
