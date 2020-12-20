@@ -67,9 +67,7 @@ public class UIManager : MonoBehaviour
 
 	void DefaultSetup()
 	{
-		Debug.Log("Calling  inital handlethemechange");
 		HandleThemeChange(_isDarkTheme);
-		Debug.Log("Initail theme called!");
 	}
 
 	void HandleFontColourChange(float fontColour)
@@ -101,19 +99,16 @@ public class UIManager : MonoBehaviour
 
 	public void StartClick()
 	{
-		Debug.Log("Start buttone clicked");
-		//SceneManager.LoadScene("EmptyScene");
+		SceneManager.LoadScene("EmptyScene");
 	}
 
 	public void ToggleOptionsMenu()
 	{
-		Debug.Log("optiosn buttone clciked");
 		OnOptionsMenuActivated.Invoke(true);
 	}
 
 	public void QuitClick()
 	{
-		Debug.Log("Quit button clicked");
 		Application.Quit();
 	}
 }

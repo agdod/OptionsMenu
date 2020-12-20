@@ -6,8 +6,8 @@ using TMPro;
 
 public class ActivateTheme : MonoBehaviour
 {
-   // Listener for onthemechanged event
-   // adjsut backgroud to represent corresponding theme
+	// Listener for onthemechanged event
+	// adjsut backgroud to represent corresponding theme
 
 	public enum Zone
 	{
@@ -34,7 +34,7 @@ public class ActivateTheme : MonoBehaviour
 
 	void ChangeTheme(bool theme)
 	{
-		Debug.Log(this.gameObject + " of type " + _zone +" Is Dark theme " + theme);
+		Debug.Log(this.gameObject + " of type " + _zone + " Is Dark theme " + theme);
 		switch (_zone)
 		{
 			case Zone.MAIN:
@@ -43,7 +43,7 @@ public class ActivateTheme : MonoBehaviour
 			case Zone.SUB:
 				ChangeThemeSubBackground(theme);
 				break;
-			default:	
+			default:
 				break;
 		}
 	}
@@ -65,7 +65,7 @@ public class ActivateTheme : MonoBehaviour
 		{
 			_image.color = themeColor;
 		}
-		
+
 	}
 
 	void ChangeThemeSubBackground(bool theme)

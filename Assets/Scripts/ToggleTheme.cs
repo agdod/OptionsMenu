@@ -20,12 +20,12 @@ public class ToggleTheme : MonoBehaviour
 		OnThemeChange.AddListener(_optionsMenu.BubbleThemeChange);
 	}
 
-	
+
 	// Theme - true is dark.
 
 	void HandleThemeSelection(bool theme)
 	{
-		
+
 		if (_thisToggle.isOn)
 		{
 			if (_isDarkTheme)
@@ -39,6 +39,6 @@ public class ToggleTheme : MonoBehaviour
 				OnThemeChange.Invoke(false);
 			}
 		}
-		
+
 	}
 }

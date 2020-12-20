@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour
 {
-    [SerializeField] private UIManager _uiManager;
+	[SerializeField] private UIManager _uiManager;
 
 	[SerializeField] private Button _okButton;
 	[SerializeField] private Button _cancelButton;
 
 	[SerializeField] private Slider _fontSizeSlider;
 	[SerializeField] private Slider _fontColourSlider;
-	[SerializeField] private Image _sliderBackground; 
+	[SerializeField] private Image _sliderBackground;
 
 	private float _currentFontSize;
 	private float _newFontSize;
@@ -45,7 +45,7 @@ public class OptionsMenu : MonoBehaviour
 		_cancelButton.onClick.AddListener(HandleCancelClick);
 
 		_fontSizeSlider.onValueChanged.AddListener(HandleFontSizeRequest);
-		_fontColourSlider.onValueChanged.AddListener(HandleFontColorSlider);	
+		_fontColourSlider.onValueChanged.AddListener(HandleFontColorSlider);
 	}
 
 	void InitalSetup(bool status)
@@ -87,7 +87,7 @@ public class OptionsMenu : MonoBehaviour
 			_currentcolour = _newColour;
 			OnFontColourChange.Invoke(_newColour);
 		}
-		if ( _newTheme)
+		if (_newTheme)
 		{
 			OnBubbleThemeChange.Invoke(_isDarkTheme);
 		}
@@ -112,12 +112,10 @@ public class OptionsMenu : MonoBehaviour
 		// only 2 theme to choose from
 		_newTheme = true; // has Theme changed
 		_isDarkTheme = !_isDarkTheme;
-		Debug.Log("bubbling theme change up");
 	}
 
 	public void ToggleState(bool state)
 	{
-		Debug.Log("Toggling options menu : " + state);
 		gameObject.SetActive(state);
 	}
 }

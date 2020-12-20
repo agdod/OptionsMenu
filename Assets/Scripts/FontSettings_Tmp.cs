@@ -16,7 +16,7 @@ public enum FontType
 public class FontSettings_Tmp : MonoBehaviour
 {
 	[SerializeField] private UIManager _uiManager;
-	
+
 	[SerializeField] private float _fontSize;
 	[SerializeField] private float _fontColour = 0;
 	[SerializeField] private FontType _fontType;
@@ -39,16 +39,15 @@ public class FontSettings_Tmp : MonoBehaviour
 
 	private void Awake()
 	{
-		_fontText = GetComponent<TMP_Text>();		
-		if ( _fontText == null)
+		_fontText = GetComponent<TMP_Text>();
+		if (_fontText == null)
 		{
 			Debug.LogError("No TextMeshPro Componet found.");
 		}
-		
+
 		_uiManager.OnFontSizeChanged.AddListener(OnFontSizeChange);
 		_uiManager.OnFontColourChanged.AddListener(OnFontColourChange);
 		_uiManager.OnThemeChanged.AddListener(OnThemeChange);
-		Debug.Log(this.gameObject + " FontSettings Listeners added in awake");
 	}
 
 	void OnThemeChange(bool theme)
@@ -76,7 +75,7 @@ public class FontSettings_Tmp : MonoBehaviour
 
 	void OnFontSizeChange(float fontSize)
 	{
-		
+
 		// Check can adjust font size, or if current font size is same as 'new' font size
 		if (!_adjustSize || _fontSize == fontSize)
 		{
@@ -122,7 +121,7 @@ public class FontSettings_Tmp : MonoBehaviour
 			//newColor = Color.HSVToRGB(fontColour, 0f, 1f);
 			//newColor.a = 1;
 			//_fontText.color = newColor;			
-		} 
+		}
 		else
 		{
 			newColor = Color.HSVToRGB(fontColour, 1f, 1f);

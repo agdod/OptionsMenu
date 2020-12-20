@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-	[SerializeField]private UIManager _uiManager;
-	
+	[SerializeField] private UIManager _uiManager;
+
 	[SerializeField] private Button _startButton;
 	[SerializeField] private Button _optionsButton;
 	[SerializeField] private Button _quitButton;

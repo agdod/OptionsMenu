@@ -8,7 +8,7 @@ public class LanguageScript : MonoBehaviour
 	[SerializeField] private UIManager _uiManager;
 	[SerializeField] private DictonaryFile _dictonary;
 	private TMP_Text _text;
-	
+
 	private void Awake()
 	{
 		_uiManager.OnLanguageChanged.AddListener(SelectLanguage);
