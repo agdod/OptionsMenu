@@ -4063,7 +4063,7 @@ MonoBehaviour:
   m_MinValue: 8
   m_MaxValue: 26
   m_WholeNumbers: 1
-  m_Value: 20
+  m_Value: 26
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
